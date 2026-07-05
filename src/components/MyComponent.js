@@ -3,11 +3,22 @@ import React from 'react';
 
 class MyComponent extends React.Component {
 
-    handleClick(event) {
-        console.log(event.target)
+    state = {
+        name: "Ngon",
+        age: 18
     }
 
-    handleOnMoveOver(event) {
+
+    handleClick(event) {
+        this.setState({
+            name: "VY"
+        })
+        console.log("My name is", this.state.name)
+        console.log("random")
+
+    }
+
+    handleOnMoveOver = (event) => {
         console.log(event.pageX)
     }
 
@@ -16,7 +27,7 @@ class MyComponent extends React.Component {
         return (
             <div>
                 <h1>Hello React Class Component</h1>
-                <button onClick={this.handleClick}>One Click</button>
+                <button onClick={(event) => { this.handleClick(event) }}>One Click</button>
                 <br />
                 <button onClick={this.handleOnMoveOver}>Two Click</button>
             </div>
