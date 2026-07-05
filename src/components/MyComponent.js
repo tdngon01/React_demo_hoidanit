@@ -4,7 +4,7 @@ import React from 'react';
 class MyComponent extends React.Component {
 
     state = {
-        name: "Ngon",
+        name: "Anhba",
         age: 18
     }
 
@@ -21,7 +21,16 @@ class MyComponent extends React.Component {
     handleOnMoveOver = (event) => {
         console.log(event.pageX)
     }
+    handleOnChangeInput = (event) => {
+        this.setState({
+            name: event.target.value
+        })
 
+    }
+    handSubmit = (event) => {
+        event.preventDefault();
+        console.log(this.state)
+    }
     //JSX
     render() {
         return (
@@ -30,6 +39,18 @@ class MyComponent extends React.Component {
                 <button onClick={(event) => { this.handleClick(event) }}>One Click</button>
                 <br />
                 <button onClick={this.handleOnMoveOver}>Two Click</button>
+                <form onSubmit={(event) => this.handSubmit(event)}>
+                    <input
+                        value={this.state.name}
+                        type="text"
+                        onChange={(event) => this.handleOnChangeInput(event)}
+                    />
+
+
+                    <button>
+                        click one
+                    </button>
+                </form>
             </div>
         );
     }
